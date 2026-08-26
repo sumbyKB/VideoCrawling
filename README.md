@@ -26,7 +26,7 @@ TikTok 主页的视频列表接口需要签名（X-Bogus / X-Gnarly），直接�
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/<你的组织>/tiktok-creator-scan.git
+git https://github.com/sumbyKB/VideoCrawling
 cd tiktok-creator-scan
 ```
 
@@ -43,6 +43,7 @@ cp -R tiktok-creator-grid-scan ~/.claude/skills/
 ```
 
 如果 `.claude/skills/` 不存在，先创建：
+
 ```bash
 mkdir -p ~/.claude/skills/
 ```
