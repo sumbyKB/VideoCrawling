@@ -36,6 +36,9 @@ node ~/.claude/skills/tiktok-creator-grid-scan/scripts/scan.js <handle>
 ```json
 {
   "handle": "katmndzonig",
+  "nickname": "KAT MNDZONIG",
+  "uniqueId": "katmndzonig",
+  "profileUrl": "https://www.tiktok.com/@katmndzonig",
   "totalItems": 67,
   "unique": 67,
   "top20": [
@@ -57,17 +60,25 @@ node ~/.claude/skills/tiktok-creator-grid-scan/scripts/scan.js <handle>
 ```
 
 ## 输出给用户
-把 top20 转成 markdown 表格回给用户：
+先回一行达人名（handle 超链到其主页，名字旁可直接点击进入主页）：
+
+`达人：[katmndzonig](https://www.tiktok.com/@katmndzonig)`
+
+再把它 top20 转成 markdown 表格：
 
 | # | 视频 ID | 发布时间 (UTC+8) | 播放量 | 点赞 | 分享 | 评论 | 收藏 | 置顶 | 描述 |
 |---:|---|---:|---:|---:|---:|---:|---:|:---:|---|
 
+- **达人名一律用 markdown 链接** `[@handle](https://www.tiktok.com/@handle)`；若 JSON 里有 `nickname`，写成 `[nickname](profileUrl)（@handle）`
 - 置顶列：`isPinned` 为 true 用 ✅，否则 —
 - 描述截断到 40 字符
 - 表格后附一行汇总：总播放、总点赞、置顶数
 
 ## 多达人批量
 用户一次发多个链接时：去重 handle 后逐个跑 scan.js，最后输出汇总报告（每位一节 + 跨账号对比表）。
+
+- 每位一节的小标题用超链达人名：`## 达人：[@handle](https://www.tiktok.com/@handle)`
+- 跨账号对比表的「达人」列同样用 `[@handle](https://www.tiktok.com/@handle)` 超链，名字旁边即可点击进主页
 
 ## 失败处理（按顺序排查）
 

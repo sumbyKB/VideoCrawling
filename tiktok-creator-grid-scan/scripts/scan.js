@@ -128,12 +128,21 @@ async function main() {
     desc: (it.desc || '').slice(0, 80)
   }));
 
+  // 7.5 提取达人主页信息（昵称、canonical handle、主页链接）
+  const firstAuthor = unique.find(it => it.author && it.author.nickname) || unique[0];
+  const author = (firstAuthor && firstAuthor.author) || {};
+  const uniqueId = author.uniqueId || handle;
+  const nickname = author.nickname || handle;
+
   // 8. Close tab and output
   await send('Target.closeTarget', { targetId: tid }).catch(() => {});
   ws.close();
 
   const result = {
     handle,
+    nickname,
+    uniqueId,
+    profileUrl: `https://www.tiktok.com/@${uniqueId}`,
     totalItems: items.length,
     unique: unique.length,
     pinnedCount: top20.filter(v => v.isPinned).length,
