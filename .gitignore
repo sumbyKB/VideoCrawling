@@ -16,3 +16,5 @@ node_modules/
 # Output files (don't commit scrape results)
 output/
 *.json.bak
+.contextdb-enable
+.aios
