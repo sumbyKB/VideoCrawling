@@ -1,0 +1,18 @@
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Chrome profile (if accidentally created in repo)
+tiktok-chrome/
+
+# Node
+node_modules/
+*.log
+
+# Output files (don't commit scrape results)
+output/
+*.json.bak
