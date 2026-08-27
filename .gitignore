@@ -18,3 +18,10 @@ output/
 *.json.bak
 .contextdb-enable
 .aios
+graphify-out
+
+# Scan archives (business data)
+data/
+
+# Chrome path remembered by start-tiktok-chrome.bat
+chrome-path.txt
