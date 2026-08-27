@@ -9,8 +9,9 @@ description: 抓取 TikTok 达人近期视频数据（播放量、点赞、分�
 用户发 TikTok 视频链接（如 `https://www.tiktok.com/@katmndzonig/video/7671936325502749973`）或 @handle + 「分析达人」/「拉最近 20 条视频」/「拉 50 条」/「看播放量」等。
 
 ## 路径常量
-- skill 目录（本机为软链，同事机器为普通拷贝——两种情况命令都一样）：`~/.claude/skills/tiktok-creator-grid-scan/`
-- 数据留档根目录：`$HOME/.claude/skills/tiktok-creator-grid-scan/data/scans/`（随安装位置走，不在仓库里写死盘符）
+- skill 目录（本机为软链，同事机器为普通拷贝——两种情况命令都一样）：`$USERPROFILE/.claude/skills/tiktok-creator-grid-scan/`
+- 数据留档根目录：`$USERPROFILE/.claude/skills/tiktok-creator-grid-scan/data/scans/`（随安装位置走，不在仓库里写死盘符）
+- ⚠️ 所有命令一律用 `$USERPROFILE` 形式，**禁用 `$HOME` 或 `~/` 开头的路径**：部分机器设了 MSYS_NO_PATHCONV=1 禁用路径转换，`/c/Users/...` 会被 Windows 程序解析成不存在的 `C:\c\Users\...`。实测 `$USERPROFILE/C:/风格` 在转换开与关两种模式下均可用
 
 ## 标准流程
 
@@ -33,23 +34,23 @@ powershell.exe -NoProfile -Command 'Start-Process -FilePath "$env:USERPROFILE\.c
 
 ### 3. 抓取并留档（临时文件 → 验错 → 归档）
 ```bash
-node ~/.claude/skills/tiktok-creator-grid-scan/scripts/scan.js <handle> [条数] > /tmp/scan-tmp.json 2>/tmp/scan-log.txt
+node $USERPROFILE/.claude/skills/tiktok-creator-grid-scan/scripts/scan.js <handle> [条数] > /tmp/scan-tmp.json 2>/tmp/scan-log.txt
 grep -q '"videos"' /tmp/scan-tmp.json || { cat /tmp/scan-log.txt /tmp/scan-tmp.json; 按「失败处理」表的 error 码行动; }
 ```
 成功（输出含 `"videos"` 字段；错误对象没有它）才归档：
 ```bash
-mkdir -p "$HOME/.claude/skills/tiktok-creator-grid-scan/data/scans/<handle>"
-mv /tmp/scan-tmp.json "$HOME/.claude/skills/tiktok-creator-grid-scan/data/scans/<handle>/<YYYYMMDD-HHMM>.json"
+mkdir -p "$USERPROFILE/.claude/skills/tiktok-creator-grid-scan/data/scans/<handle>"
+mv /tmp/scan-tmp.json "$USERPROFILE/.claude/skills/tiktok-creator-grid-scan/data/scans/<handle>/<YYYYMMDD-HHMM>.json"
 ```
 时间戳用当下时刻。**每次成功抓取都必须归档，先归档再渲染输出。**
 
 ### 4. 增量对比（有历史档案时自动做）
 ```bash
-ls -1 "$HOME/.claude/skills/tiktok-creator-grid-scan/data/scans/<handle>"/*.json
+ls -1 "$USERPROFILE/.claude/skills/tiktok-creator-grid-scan/data/scans/<handle>"/*.json
 ```
 若除本次新档外还有更早的档案：取 `capturedAt` 最近早于本次的那份跑：
 ```bash
-node ~/.claude/skills/tiktok-creator-grid-scan/scripts/compare.js <上次档案> <本次档案>
+node $USERPROFILE/.claude/skills/tiktok-creator-grid-scan/scripts/compare.js <上次档案> <本次档案>
 ```
 把 stdout 的 markdown 小节**原样接在主表格后面**。只有一个档案则跳过此步。
 
