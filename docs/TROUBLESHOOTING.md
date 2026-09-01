@@ -56,8 +56,8 @@
 ## 6. Claude Code 没识别到 skill
 
 **排查**：
-- 确认 skill 路径：`~/.claude/skills/tiktok-creator-grid-scan/SKILL.md` 存在
-- 在 Claude Code 里问：「你能看到 tiktok-creator-grid-scan 这个 skill 吗？」
+- 确认 skill 路径：`~/.claude/skills/VideoCrawling/SKILL.md` 存在
+- 在 Claude Code 里问：「你能看到 VideoCrawling 这个 skill 吗？」
 - 如果看不到，重启 Claude Code
 
 ## 7. macOS / Linux 上 .sh 脚本无法运行

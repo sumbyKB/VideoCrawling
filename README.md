@@ -32,14 +32,14 @@ cd tiktok-creator-scan
 
 ### 2. 安装 skill 到 Claude Code
 
-把 `tiktok-creator-grid-scan` 文件夹复制到 Claude Code 的 skills 目录：
+把 `VideoCrawling` 文件夹复制到 Claude Code 的 skills 目录：
 
 ```bash
 # Windows
-xcopy /E /I tiktok-creator-grid-scan "%USERPROFILE%\.claude\skills\tiktok-creator-grid-scan"
+xcopy /E /I VideoCrawling "%USERPROFILE%\.claude\skills\VideoCrawling"
 
 # macOS / Linux
-cp -R tiktok-creator-grid-scan ~/.claude/skills/
+cp -R VideoCrawling ~/.claude/skills/
 ```
 
 如果 `.claude/skills/` 不存在，先创建：
@@ -90,7 +90,7 @@ copy start-tiktok-chrome.bat "%USERPROFILE%\Desktop\"
 tiktok-creator-scan/
 ├── README.md                          # 本文件
 ├── start-tiktok-chrome.bat            # 专用 Chrome 启动器（Windows）
-├── tiktok-creator-grid-scan/          # Claude Code skill
+├── VideoCrawling/          # Claude Code skill
 │   ├── SKILL.md                       # skill 触发词 + 工作流
 │   ├── scripts/
 │   │   └── scan.js                    # 核心抓取脚本（CDP + 拦截 post/item_list）

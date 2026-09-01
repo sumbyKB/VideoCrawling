@@ -11,13 +11,13 @@
 ## 一次性安装（3 步，5 分钟）
 
 ### 第 1 步：安装 skill 到 Claude Code
-把这个文件夹（`tiktok-creator-grid-scan`）整个复制到：
+把这个文件夹（`VideoCrawling`）整个复制到：
 ```
 C:\Users\<你的用户名>\.claude\skills\
 ```
 最终路径应该是：
 ```
-C:\Users\<你的用户名>\.claude\skills\tiktok-creator-grid-scan\
+C:\Users\<你的用户名>\.claude\skills\VideoCrawling\
 ├── SKILL.md
 ├── scripts\scan.js          # 抓取主脚本
 ├── scripts\compare.js       # 增量对比
@@ -99,7 +99,7 @@ https://www.tiktok.com/@xxxxxx/video/1234567890123456789
 
 ### 数据存在哪？
 ```
-C:\Users\<你的用户名>\.claude\skills\tiktok-creator-grid-scan\data\scans\<达人handle>\<日期时间>.json
+C:\Users\<你的用户名>\.claude\skills\VideoCrawling\data\scans\<达人handle>\<日期时间>.json
 ```
 CSV 导出文件生成在同一目录里。想重置数据直接删 `data` 文件夹即可。
 
