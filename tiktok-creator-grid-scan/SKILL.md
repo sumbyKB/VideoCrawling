@@ -1,5 +1,5 @@
 ---
-name: VideoCrawling
+name: videocrawling
 description: 抓取 TikTok 达人近期视频数据（播放量、点赞、分享、评论、收藏、时长、话题标签、置顶状态）+ 主页级指标（粉丝数、获赞、作品总数），自动留档到 data/scans/ 并支持与上次扫描自动增量对比。触发：用户发 TikTok 视频链接（tiktok.com/@handle/video/id）并要求分析达人、拉最近视频、看播放量、达人数据、"拉 N 条"、"对比上次"、"导出 CSV"。Use when user sends a TikTok video link and asks for creator's recent video stats. Chrome on port 9223 is auto-launched by this skill when missing — no manual step needed.
 ---
 
